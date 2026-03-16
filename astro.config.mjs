@@ -23,10 +23,11 @@ export default defineConfig({
         {
           label: 'Presentation',
           items: [
-            { label: 'Accueil', link: '/fr/' },
             { label: 'À propos', link: '/fr/presentation/a-propos/' },
             { label: 'Parcours', link: '/fr/presentation/parcours/' },
-            { label: 'Projets', link: '/fr/presentation/projets/' }
+            { label: 'Projets', link: '/fr/presentation/projets/' },
+            { label: "Exemples d'éléments", link: '/fr/presentation/exemples-elements/' },
+            { label: 'Documents', link: '/fr/presentation/documents/' }
           ]
         },
         {
@@ -39,6 +40,9 @@ export default defineConfig({
         }
       ],
       customCss: ['./src/styles/custom.css'],
+      components: {
+        Header: './src/components/TopHeader.astro'
+      },
       plugins: [
         catppuccin({
           dark: { flavor: 'mocha', accent: 'lavender' },
