@@ -1,0 +1,67 @@
+---
+title: Exemples d'éléments
+description: Page de démonstration avec les principaux composants visuels et blocs MDX.
+---
+
+import { Aside, Card, CardGrid, LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+
+# Exemples d'éléments
+
+Cette page sert de **sandbox** pour tester les composants que tu pourras réutiliser partout dans ton portfolio.
+
+## Boutons d'action
+
+<LinkButton href="/fr/presentation/documents/" variant="primary" icon="download">Documents téléchargeables</LinkButton>
+<LinkButton href="/fr/veille/introduction/" variant="secondary" icon="right-arrow">Aller à la veille</LinkButton>
+
+## Cartes
+
+<CardGrid>
+  <Card title="Présentation" icon="user">Bloc résumé pour ton profil, ton parcours et tes objectifs.</Card>
+  <Card title="Veille" icon="open-book">Bloc de suivi des sujets, tendances et expérimentations techniques.</Card>
+  <Card title="Projets" icon="pencil">Bloc projet avec stack, captures d'écran et documents associés.</Card>
+</CardGrid>
+
+## Image placeholder
+
+![Image placeholder pour futur projet](/images/placeholder-project.svg)
+
+## Vidéo YouTube (placeholder)
+
+<iframe
+  width="100%"
+  height="420"
+  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+  title="YouTube video placeholder"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+## Tableau d'exemple
+
+| Élément | Usage | Statut |
+| --- | --- | --- |
+| Image | Illustrer un projet | ✅ |
+| Vidéo | Démo ou présentation | ✅ |
+| Document | Fichier à télécharger | ✅ |
+| Carte | Résumer une section | ✅ |
+
+## Onglets (tabs)
+
+<Tabs>
+  <TabItem label="Objectif">
+    Créer une page de référence qui démontre tous les éléments réutilisables du site.
+  </TabItem>
+  <TabItem label="Processus">
+    Ajouter le contenu dans `/src/content/docs/fr/` et les assets dans `/public/`.
+  </TabItem>
+  <TabItem label="Résultat">
+    Une base prête pour intégrer du contenu réel rapidement.
+  </TabItem>
+</Tabs>
+
+<Aside type="tip" title="Bonnes pratiques">
+Conserve cette page comme zone de test pour valider l'affichage de nouveaux composants avant de les utiliser dans les vraies pages.
+</Aside>

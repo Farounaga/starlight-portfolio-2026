@@ -1,0 +1,19 @@
+{
+  "name": "starlight-portfolio-2026",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "astro": "^6.0.5",
+    "@astrojs/starlight": "^0.38.1",
+    "@astrojs/mdx": "^5.0.1",
+    "@catppuccin/starlight": "^2.0.1"
+  }
+}
