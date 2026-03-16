@@ -35,3 +35,26 @@ npm run preview
 ```bash
 npm run check
 ```
+
+## Utiliser le flux RSS de veille
+
+La section veille publie un flux RSS disponible ici :
+
+- En local : `http://localhost:4321/fr/veille/rss.xml`
+- En production : `https://votre-domaine/fr/veille/rss.xml`
+
+### Comment s'abonner
+
+1. Copie l'URL du flux.
+2. Colle-la dans ton lecteur RSS (Feedly, Inoreader, FreshRSS, etc.).
+3. Tu recevras automatiquement les nouvelles publications de veille.
+
+### Vérifier rapidement que le flux fonctionne
+
+En local, lance le site puis teste :
+
+```bash
+curl http://localhost:4321/fr/veille/rss.xml
+```
+
+Tu dois voir un XML avec les items de la collection `src/content/veille/`.

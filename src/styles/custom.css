@@ -1,28 +1,110 @@
+@import '@radix-ui/colors/slate.css';
+@import '@radix-ui/colors/blue.css';
+
 :root {
-  --sl-content-width: 72rem;
+  --sl-content-width: 74rem;
+  --sl-color-bg: var(--slate-2);
+  --sl-color-bg-nav: var(--slate-1);
+  --sl-color-bg-sidebar: var(--slate-1);
+  --sl-color-text: var(--slate-12);
+  --sl-color-gray-2: var(--slate-10);
+  --sl-color-gray-5: var(--slate-7);
+  --sl-color-gray-6: var(--slate-8);
+  --sl-color-accent: var(--blue-9);
+  --sl-color-accent-high: var(--blue-11);
 }
 
-[data-has-hero] .hero {
-  padding-top: 2.5rem;
-  padding-bottom: 2rem;
+:root[data-theme='light'] {
+  --sl-color-bg: var(--slate-2);
+  --sl-color-bg-nav: var(--slate-1);
+  --sl-color-bg-sidebar: var(--slate-1);
+  --sl-color-text: var(--slate-12);
+  --sl-color-gray-2: var(--slate-10);
+  --sl-color-gray-5: var(--slate-7);
+  --sl-color-gray-6: var(--slate-8);
+  --sl-color-accent: var(--blue-9);
+  --sl-color-accent-high: var(--blue-11);
+}
+
+header {
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--sl-color-gray-5);
+}
+
+.sl-container {
+  max-width: 84rem;
+}
+
+.content-panel {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 14px;
+  background: color-mix(in oklab, var(--sl-color-bg) 90%, transparent);
+}
+
+/* Requested: only subtle geometric mesmerizing background on home */
+[data-has-hero] .main-pane {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+[data-has-hero] .main-pane::before,
+[data-has-hero] .main-pane::after {
+  content: '';
+  position: absolute;
+  inset: -30% -10%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+[data-has-hero] .main-pane::before {
+  background:
+    radial-gradient(circle at 20% 25%, color-mix(in oklab, var(--sl-color-accent) 22%, transparent) 0%, transparent 35%),
+    radial-gradient(circle at 78% 28%, color-mix(in oklab, var(--blue-8) 18%, transparent) 0%, transparent 37%),
+    radial-gradient(circle at 56% 80%, color-mix(in oklab, var(--blue-6) 16%, transparent) 0%, transparent 42%);
+  filter: blur(40px);
+  animation: floatGlow 18s ease-in-out infinite alternate;
+  opacity: 0.5;
+}
+
+[data-has-hero] .main-pane::after {
+  background-image:
+    linear-gradient(to right, color-mix(in oklab, var(--sl-color-gray-5) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklab, var(--sl-color-gray-5) 24%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(circle at 50% 38%, black 36%, transparent 85%);
+  opacity: 0.24;
+  animation: driftGrid 26s linear infinite;
+}
+
+@keyframes floatGlow {
+  0% { transform: translate3d(-1.2%, -0.6%, 0) scale(1); }
+  100% { transform: translate3d(1.6%, 1.2%, 0) scale(1.03); }
+}
+
+@keyframes driftGrid {
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(16px) rotate(0.8deg); }
 }
 
 [data-has-hero] .hero h1 {
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.05;
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
+  line-height: 1.02;
   letter-spacing: -0.02em;
 }
 
 [data-has-hero] .hero .tagline {
-  max-width: 48rem;
+  max-width: 50rem;
   font-size: 1.1rem;
+  color: var(--sl-color-gray-2);
 }
 
-[data-has-hero] .sl-link-button[variant='primary'] {
+.sl-link-button[variant='primary'] {
+  border-radius: 10px;
   font-weight: 700;
-  box-shadow: 0 10px 30px color-mix(in oklab, var(--sl-color-accent) 35%, transparent);
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--sl-color-accent) 30%, transparent);
 }
 
-[data-has-hero] .sl-link-button[variant='secondary'] {
-  border-radius: 999px;
+.sl-link-button[variant='secondary'] {
+  border-radius: 10px;
 }

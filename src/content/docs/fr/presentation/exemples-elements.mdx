@@ -4,6 +4,7 @@ description: Page de démonstration avec les principaux composants visuels et bl
 ---
 
 import { Aside, Card, CardGrid, LinkButton, Tabs, TabItem } from '@astrojs/starlight/components';
+import RadixShowcase from '../../../../components/radix/RadixShowcase';
 
 # Exemples d'éléments
 
@@ -11,8 +12,8 @@ Cette page sert de **sandbox** pour tester les composants que tu pourras réutil
 
 ## Boutons d'action
 
-<LinkButton href="/fr/presentation/documents/" variant="primary" icon="download">Documents téléchargeables</LinkButton>
-<LinkButton href="/fr/veille/introduction/" variant="secondary" icon="right-arrow">Aller à la veille</LinkButton>
+<LinkButton href="/presentation/documents/" variant="primary" icon="download">Documents téléchargeables</LinkButton>
+<LinkButton href="/veille/" variant="secondary" icon="right-arrow">Aller à la veille</LinkButton>
 
 ## Cartes
 
@@ -65,3 +66,8 @@ Cette page sert de **sandbox** pour tester les composants que tu pourras réutil
 <Aside type="tip" title="Bonnes pratiques">
 Conserve cette page comme zone de test pour valider l'affichage de nouveaux composants avant de les utiliser dans les vraies pages.
 </Aside>
+
+
+## Radix UI (React island)
+
+<RadixShowcase client:load />
