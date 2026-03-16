@@ -1,0 +1,53 @@
+---
+title: Documents
+description: Zone de téléchargement des fichiers (CV, rapports, annexes, présentations).
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+# Documents téléchargeables
+
+Cette page centralise les documents que tu veux partager.
+
+## Téléchargements (exemples)
+
+- [Télécharger le template CV (.txt)](/documents/samples/cv-vspirine-template.txt)
+- [Télécharger la checklist veille (.md)](/documents/samples/veille-checklist.md)
+- [Télécharger le template projets (.csv)](/documents/samples/projets-template.csv)
+
+## Espace d'upload (workflow)
+
+Dépose tes fichiers dans le dossier suivant du projet :
+
+`/public/documents/uploads/`
+
+Ensuite, ils seront disponibles directement via URL, par exemple :
+
+- `/documents/uploads/cv-vspirine.pdf`
+- `/documents/uploads/rapport-veille.pdf`
+
+<CardGrid>
+  <Card title="Formats recommandés" icon="document">
+    PDF pour les documents officiels, ZIP pour archives, CSV/MD pour ressources techniques.
+  </Card>
+  <Card title="Convention de noms" icon="seti:folder">
+    Utilise des noms explicites en minuscules, ex: `rapport-veille-2026.pdf`.
+  </Card>
+</CardGrid>
+
+## Exemple d'intégration vidéo + doc
+
+Tu peux accompagner une vidéo de présentation avec un document à télécharger :
+
+- [Télécharger le support de présentation (placeholder)](/documents/samples/cv-vspirine-template.txt)
+
+<iframe
+  width="100%"
+  height="360"
+  src="https://www.youtube.com/embed/jNQXAC9IVRw"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
