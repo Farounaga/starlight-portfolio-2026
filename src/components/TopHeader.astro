@@ -1,0 +1,100 @@
+---
+import config from 'virtual:starlight/user-config';
+import LanguageSelect from 'virtual:starlight/components/LanguageSelect';
+import Search from 'virtual:starlight/components/Search';
+import SiteTitle from 'virtual:starlight/components/SiteTitle';
+import SocialIcons from 'virtual:starlight/components/SocialIcons';
+import ThemeSelect from 'virtual:starlight/components/ThemeSelect';
+
+const shouldRenderSearch =
+  config.pagefind || config.components.Search !== '@astrojs/starlight/components/Search.astro';
+
+const navItems = [
+  { label: 'Presentation', href: '/fr/presentation/a-propos/' },
+  { label: 'Veille', href: '/fr/veille/introduction/' }
+];
+---
+
+<div class="header">
+  <div class="title-wrapper sl-flex">
+    <SiteTitle />
+  </div>
+
+  <nav class="top-nav print:hidden" aria-label="Navigation principale">
+    {navItems.map((item) => (
+      <a class="top-nav-link" href={item.href}>{item.label}</a>
+    ))}
+  </nav>
+
+  <div class="sl-flex print:hidden right-group">
+    <div class="sl-hidden lg:sl-flex">
+      {shouldRenderSearch && <Search />}
+    </div>
+    <div class="sl-hidden md:sl-flex social-icons">
+      <SocialIcons />
+    </div>
+    <ThemeSelect />
+    <LanguageSelect />
+  </div>
+</div>
+
+<style>
+  @layer starlight.core {
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 100%;
+    }
+
+    .title-wrapper {
+      overflow: clip;
+      padding: 0.25rem;
+      margin: -0.25rem;
+      min-width: 0;
+    }
+
+    .top-nav {
+      display: none;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .top-nav-link {
+      border: 1px solid var(--sl-color-gray-5);
+      border-radius: 999px;
+      padding: 0.45rem 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--sl-color-white);
+      transition: all 0.2s ease;
+      background: color-mix(in oklab, var(--sl-color-bg-nav) 85%, transparent);
+    }
+
+    .top-nav-link:hover {
+      border-color: var(--sl-color-accent);
+      color: var(--sl-color-accent-high);
+      transform: translateY(-1px);
+    }
+
+    .right-group,
+    .social-icons {
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .social-icons::after {
+      content: '';
+      height: 1.7rem;
+      border-inline-end: 1px solid var(--sl-color-gray-5);
+      margin-inline-start: 0.25rem;
+    }
+
+    @media (min-width: 50rem) {
+      .top-nav {
+        display: flex;
+      }
+    }
+  }
+</style>
