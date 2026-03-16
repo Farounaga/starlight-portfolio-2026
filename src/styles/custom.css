@@ -1,0 +1,11 @@
+:root {
+  --sl-content-width: 60rem;
+}
+
+.hero .tagline {
+  max-width: 40rem;
+}
+
+.sl-link-button[variant='primary'] {
+  font-weight: 700;
+}
