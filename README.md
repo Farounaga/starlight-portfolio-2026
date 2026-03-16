@@ -1,60 +1,72 @@
-# Portfolio Starlight (fr)
+# Portfolio MDX + shadcn (Astro)
 
-Base minimaliste d'un portfolio/documentation avec **Astro + Starlight + MDX** et thème **Catppuccin**.
+Site portfolio prêt à remplir où **chaque page est un fichier MDX**.
 
-## Prérequis
+## Stack
 
-- Node.js 22.12+
-- npm 10+
+- Astro
+- MDX
+- React islands
+- shadcn-style components (Button, Card, Tabs, Accordion)
 
-## Lancer en développement
+## Démarrer
 
 ```bash
 npm install
 npm run dev
 ```
 
-Le site sera disponible sur `http://localhost:4321`.
-
-## Build de production
+## Build
 
 ```bash
 npm run build
 ```
 
-Les fichiers statiques sont générés dans `dist/`.
+## Workflow contenu (sans prise de tête)
 
-## Prévisualiser le build
+Le menu est autogénéré par dossiers:
 
-```bash
-npm run preview
+- `src/content/pages/fr/presentation/*`
+- `src/content/pages/fr/veille/*`
+
+Donc pour ajouter une page:
+
+1. Crée `mon-fichier.mdx` dans le dossier voulu.
+2. Ajoute le frontmatter:
+
+```md
+---
+title: Mon titre
+order: 10
+---
 ```
 
-## Vérification de types et contenu
+3. Écris ton contenu.
 
-```bash
-npm run check
+## Puis-je écrire juste du texte en MDX ?
+
+Oui, totalement. Tu peux rester en **Markdown pur**:
+
+```md
+# Titre
+
+Paragraphe normal.
+
+- Liste
+- Liste
 ```
 
-## Utiliser le flux RSS de veille
+Tu ajoutes des composants (Button/Card/Tabs...) uniquement quand tu veux enrichir une page.
+Aucun besoin de mettre des `<div>` partout.
 
-La section veille publie un flux RSS disponible ici :
+## Utiliser les composants dans MDX
 
-- En local : `http://localhost:4321/fr/veille/rss.xml`
-- En production : `https://votre-domaine/fr/veille/rss.xml`
+Exemple:
 
-### Comment s'abonner
+```mdx
+import { Button } from '../../../components/ui/button';
 
-1. Copie l'URL du flux.
-2. Colle-la dans ton lecteur RSS (Feedly, Inoreader, FreshRSS, etc.).
-3. Tu recevras automatiquement les nouvelles publications de veille.
-
-### Vérifier rapidement que le flux fonctionne
-
-En local, lance le site puis teste :
-
-```bash
-curl http://localhost:4321/fr/veille/rss.xml
+<Button>Cliquer</Button>
 ```
 
-Tu dois voir un XML avec les items de la collection `src/content/veille/`.
+Pour composants interactifs (Tabs/Accordion), ajoute `client:load`.

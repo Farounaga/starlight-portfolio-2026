@@ -1,0 +1,90 @@
+---
+title: Accueil
+description: Portail principal du portfolio.
+order: 0
+---
+
+import { Button } from '../../../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
+
+# Bienvenue 👋
+
+Oui: tu peux écrire **du texte MDX normal** sans ajouter des `<div>` partout.
+
+Le principe du starter:
+
+- tu crées des pages `.mdx`
+- tu écris en Markdown classique
+- tu ajoutes un composant seulement quand tu en as besoin
+
+<Button asChild>
+  <a href="/fr/presentation/a-propos/">Commencer la présentation</a>
+</Button>
+
+<Button variant="outline" asChild>
+  <a href="/fr/presentation/exemples-elements/">Voir des exemples MDX simples</a>
+</Button>
+
+<Button variant="secondary" asChild>
+  <a href="/fr/veille/introduction/">Aller à la veille</a>
+</Button>
+
+<Card className="not-prose mt-6">
+  <CardHeader>
+    <CardTitle>Workflow ultra simple</CardTitle>
+    <CardDescription>Écrire vite, publier vite.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <ol className="list-decimal space-y-2 pl-5 text-sm text-muted-foreground">
+      <li>Crée un fichier `.mdx` dans `src/content/pages/fr/...`.</li>
+      <li>Ajoute `title` et `order` dans le frontmatter.</li>
+      <li>Écris ton contenu en Markdown (titres, listes, liens, images).</li>
+    </ol>
+  </CardContent>
+</Card>
+
+<Card className="not-prose mt-4">
+  <CardHeader>
+    <CardTitle>Raccourcis utiles</CardTitle>
+    <CardDescription>Pour éditer rapidement les sections principales.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <ul className="space-y-2 text-sm text-muted-foreground">
+      <li>
+        <a className="underline underline-offset-4" href="/fr/presentation/a-propos/">Modifier la présentation</a>
+      </li>
+      <li>
+        <a className="underline underline-offset-4" href="/fr/presentation/projets/">Mettre à jour les projets</a>
+      </li>
+      <li>
+        <a className="underline underline-offset-4" href="/fr/veille/introduction/">Compléter la veille</a>
+      </li>
+    </ul>
+  </CardContent>
+</Card>
+
+## Exemple frontmatter minimal
+
+```md
+---
+title: Mon nouveau contenu
+order: 20
+---
+```
+
+## Tu peux rester en Markdown pur
+
+Exemple de page valide:
+
+```md
+# Mon titre
+
+Un paragraphe simple.
+
+- point 1
+- point 2
+
+[Un lien](https://example.com)
+```
+
+Ajoute des composants uniquement quand tu veux enrichir la page.
