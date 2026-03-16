@@ -1,0 +1,40 @@
+---
+title: Exemples d'éléments
+order: 5
+---
+
+import { Button } from '../../../../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../../components/ui/card';
+import ShadcnInteractiveDemo from '../../../../components/mdx/ShadcnInteractiveDemo';
+
+# Exemples MDX simples
+
+Tu peux écrire une page entière sans HTML custom.
+
+## 1) Markdown pur
+
+- un item
+- un deuxième item
+- un troisième item
+
+## 2) Un composant ponctuel
+
+<Button>Action principale</Button>
+
+<Button variant="outline">Secondaire</Button>
+
+## 3) Une card pour structurer une section
+
+<Card className="not-prose mt-4">
+  <CardHeader>
+    <CardTitle>Card prête à l'emploi</CardTitle>
+    <CardDescription>À utiliser seulement quand c'est utile.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    Tu peux mettre ici du texte, des listes, des liens, etc.
+  </CardContent>
+</Card>
+
+## 4) Composant interactif
+
+<ShadcnInteractiveDemo client:load />
