@@ -1,0 +1,31 @@
+---
+title: Accueil
+description: Portail principal du portfolio.
+template: splash
+hero:
+  title: Salut, moi c'est V. Spirine
+  tagline: Portfolio en français pour présenter mon parcours et publier ma veille technologique en format flux.
+  image:
+    alt: Aperçu abstrait du portfolio
+    file: ../../../assets/placeholder.svg
+  actions:
+    - text: Explorer Presentation
+      link: /presentation/a-propos/
+      icon: right-arrow
+      variant: primary
+    - text: Voir les publications de veille
+      link: /veille/
+      icon: right-arrow
+      variant: secondary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid>
+  <Card title="Presentation" icon="user">
+    Profil, parcours, projets, documents téléchargeables et démonstrations de composants.
+  </Card>
+  <Card title="Veille en publications" icon="open-book">
+    Notes publiées en continu avec flux RSS pour suivre les nouveaux billets.
+  </Card>
+</CardGrid>

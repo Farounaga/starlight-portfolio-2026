@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('veille', ({ data }) => !data.draft);
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{entry.data.title}</title>
+    <style>
+      body { font-family: Inter, system-ui, sans-serif; margin: 0; background: #0b0d12; color: #e6edf3; }
+      main { max-width: 820px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+      a { color: #7cc0ff; }
+      .meta { color: #9aa4b2; margin-bottom: 1.25rem; }
+      article { border:1px solid #30363d; border-radius: 16px; background:#11161d; padding:1.25rem; }
+      .back { display:inline-block; margin-bottom:1.2rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="/fr/veille/">← Retour aux publications</a>
+      <h1>{entry.data.title}</h1>
+      <div class="meta">{entry.data.pubDate.toLocaleDateString('fr-FR')}</div>
+      <article>
+        <Content />
+      </article>
+    </main>
+  </body>
+</html>

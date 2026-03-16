@@ -1,0 +1,26 @@
+{
+  "name": "starlight-portfolio-2026",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^5.0.1",
+    "@astrojs/react": "^5.0.0",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/starlight": "^0.38.1",
+    "@catppuccin/starlight": "^2.0.1",
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "astro": "^6.0.5",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

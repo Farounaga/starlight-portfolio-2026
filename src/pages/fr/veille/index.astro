@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+
+const entries = (await getCollection('veille', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Veille — Publications</title>
+    <style>
+      :root { color-scheme: dark light; }
+      body { font-family: Inter, system-ui, sans-serif; margin: 0; background: #0b0d12; color: #e6edf3; }
+      main { max-width: 900px; margin: 0 auto; padding: 2.5rem 1rem 4rem; }
+      a { color: #7cc0ff; text-decoration: none; }
+      .top { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; }
+      .pill { border:1px solid #30363d; border-radius:999px; padding:.4rem .75rem; color:#c9d1d9; }
+      .post { border:1px solid #30363d; background:#11161d; border-radius:14px; padding:1rem 1.1rem; margin-top:1rem; }
+      .meta { color:#9aa4b2; font-size:.9rem; margin-top:.35rem; }
+      .tags { display:flex; gap:.4rem; flex-wrap:wrap; margin-top:.7rem; }
+      .tag { background:#1f2937; border-radius:999px; padding:.2rem .55rem; font-size:.82rem; color:#c7d2fe; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="top">
+        <h1>Veille — Publications</h1>
+        <a class="pill" href="/fr/veille/rss.xml">RSS</a>
+      </div>
+      <p>Flux éditorial de veille technologique. Chaque note est publiée comme un mini-article.</p>
+
+      {entries.map((entry) => (
+        <article class="post">
+          <h2><a href={`/fr/veille/${entry.id}/`}>{entry.data.title}</a></h2>
+          <p>{entry.data.description}</p>
+          <div class="meta">{entry.data.pubDate.toLocaleDateString('fr-FR')}</div>
+          <div class="tags">
+            {entry.data.tags.map((tag) => <span class="tag">#{tag}</span>)}
+          </div>
+        </article>
+      ))}
+    </main>
+  </body>
+</html>
