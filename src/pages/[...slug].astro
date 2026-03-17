@@ -1,0 +1,61 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import DocsLayout from '../layouts/DocsLayout.astro';
+
+const entries = await getCollection('pages', ({ data }) => !data.draft);
+
+function normalizeId(id: string) {
+  return id.replace(/\/index$/, '');
+}
+
+function toHref(id: string) {
+  const clean = normalizeId(id);
+  return '/' + clean + '/';
+}
+
+function getSection(id: string) {
+  const parts = normalizeId(id).split('/');
+  return parts[1] || 'autres';
+}
+
+const groupsMap = new Map<string, CollectionEntry<'pages'>[]>();
+for (const e of entries) {
+  const section = getSection(e.id);
+  if (!groupsMap.has(section)) groupsMap.set(section, []);
+  groupsMap.get(section)?.push(e);
+}
+
+const groups = Array.from(groupsMap.entries()).map(([key, list]) => ({
+  label: key.charAt(0).toUpperCase() + key.slice(1),
+  items: list
+    .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999) || a.data.title.localeCompare(b.data.title))
+    .map((e) => ({ title: e.data.title, href: toHref(e.id), slug: normalizeId(e.id) }))
+}));
+
+export async function getStaticPaths() {
+  const entries = await getCollection('pages', ({ data }) => !data.draft);
+  return entries.map((entry) => {
+    const cleaned = entry.id.replace(/\/index$/, '');
+    return {
+      params: { slug: cleaned },
+      props: { entry }
+    };
+  });
+}
+
+const { entry } = Astro.props as { entry: CollectionEntry<'pages'> };
+const { Content } = await render(entry);
+const currentSlug = normalizeId(entry.id);
+const isHomePage = currentSlug === 'fr';
+---
+
+<DocsLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  groups={groups}
+  currentSlug={currentSlug}
+  showSidebar={!isHomePage}
+  prose={!isHomePage}
+>
+  <Content />
+</DocsLayout>

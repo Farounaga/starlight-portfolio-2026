@@ -1,0 +1,67 @@
+---
+title: Accueil
+description: Page d’accueil portfolio sans sidebar.
+order: 0
+---
+
+import { Button } from '../../../components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../components/ui/card';
+import { Badge } from '../../../components/ui/badge';
+
+<section className="rounded-2xl border bg-card p-8 md:p-12">
+  <Badge className="mb-4" variant="secondary">Portfolio starter Astro + MDX</Badge>
+  <h1 className="mb-3 text-4xl font-bold tracking-tight md:text-5xl">Главная страница без бокового меню</h1>
+  <p className="mb-6 max-w-2xl text-muted-foreground">
+    Здесь можно быстро стартовать: писать контент в MDX как обычный Markdown и точечно добавлять
+    shadcn-компоненты, когда это реально нужно.
+  </p>
+  <div className="flex flex-wrap gap-3">
+    <Button asChild>
+      <a href="/fr/presentation/a-propos/">Заполнить “О себе”</a>
+    </Button>
+    <Button variant="outline" asChild>
+      <a href="/fr/presentation/exemples-elements/">Смотреть все элементы</a>
+    </Button>
+    <Button variant="secondary" asChild>
+      <a href="/fr/veille/introduction/">Открыть veille</a>
+    </Button>
+  </div>
+</section>
+
+<div className="mt-6 grid gap-4 md:grid-cols-3">
+  <Card>
+    <CardHeader>
+      <CardTitle>1) Пишешь текст</CardTitle>
+      <CardDescription>Обычный Markdown в `.mdx` файле.</CardDescription>
+    </CardHeader>
+    <CardContent className="text-sm text-muted-foreground">Заголовки, списки, ссылки, таблицы — без лишней верстки.</CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>2) Добавляешь компоненты</CardTitle>
+      <CardDescription>Только там, где они дают пользу.</CardDescription>
+    </CardHeader>
+    <CardContent className="text-sm text-muted-foreground">Button, Card, Tabs, Form, Table, Alert и т.д.</CardContent>
+  </Card>
+  <Card>
+    <CardHeader>
+      <CardTitle>3) Выбираешь тему</CardTitle>
+      <CardDescription>Все 4 Catppuccin flavor.</CardDescription>
+    </CardHeader>
+    <CardContent className="text-sm text-muted-foreground">Latte, Frappé, Macchiato, Mocha через селектор в шапке.</CardContent>
+  </Card>
+</div>
+
+## Быстрый старт контента
+
+1. Создай файл в `src/content/pages/fr/...`.
+2. Добавь frontmatter:
+
+```md
+---
+title: Моя страница
+order: 10
+---
+```
+
+3. Пиши Markdown как обычно.

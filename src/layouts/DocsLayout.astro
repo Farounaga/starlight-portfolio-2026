@@ -1,0 +1,69 @@
+---
+import '../styles/globals.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+type NavItem = { title: string; href: string; slug: string };
+type NavGroup = { label: string; items: NavItem[] };
+
+const { title, description, groups = [], currentSlug, showSidebar = true, prose = true } = Astro.props as {
+  title?: string;
+  description?: string;
+  groups?: NavGroup[];
+  currentSlug?: string;
+  showSidebar?: boolean;
+  prose?: boolean;
+};
+---
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? `${title} | Portfolio` : 'Portfolio'}</title>
+    <meta name="description" content={description ?? 'Portfolio MDX + shadcn'} />
+  </head>
+  <body>
+    <header class="sticky top-0 z-30 border-b bg-background/85 backdrop-blur">
+      <div class="container flex h-14 items-center justify-between">
+        <a href="/fr/" class="font-semibold">Portfolio</a>
+        <div class="flex items-center gap-3">
+          <a href="/fr/presentation/a-propos/" class="text-sm text-muted-foreground hover:text-foreground">Presentation</a>
+          <a href="/fr/veille/introduction/" class="text-sm text-muted-foreground hover:text-foreground">Veille</a>
+          <ThemeToggle />
+        </div>
+      </div>
+    </header>
+
+    {showSidebar ? (
+      <div class="container grid grid-cols-1 gap-6 py-6 md:grid-cols-[260px_1fr]">
+        <aside class="rounded-lg border p-4 h-fit">
+          {groups.map((group) => (
+            <section class="mb-6 last:mb-0">
+              <h2 class="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{group.label}</h2>
+              <ul class="space-y-1">
+                {group.items.map((item) => (
+                  <li>
+                    <a
+                      href={item.href}
+                      class={`block rounded-md px-2 py-1.5 text-sm transition hover:bg-muted ${item.slug === currentSlug ? 'bg-muted font-medium text-foreground' : 'text-muted-foreground'}`}
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </aside>
+
+        <main class={`rounded-lg border p-6 max-w-none ${prose ? 'prose prose-slate dark:prose-invert' : ''}`}>
+          <slot />
+        </main>
+      </div>
+    ) : (
+      <main class={`container py-8 max-w-none ${prose ? 'prose prose-slate dark:prose-invert' : ''}`}>
+        <slot />
+      </main>
+    )}
+  </body>
+</html>

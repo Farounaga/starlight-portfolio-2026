@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme='latte'] {
+  --background: 220 23% 95%;
+  --foreground: 234 16% 35%;
+  --card: 0 0% 100%;
+  --card-foreground: 234 16% 35%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 234 16% 35%;
+  --primary: 267 84% 58%;
+  --primary-foreground: 0 0% 100%;
+  --muted: 223 16% 88%;
+  --muted-foreground: 233 13% 41%;
+  --border: 220 16% 82%;
+  --input: 220 16% 82%;
+  --ring: 267 84% 58%;
+  --radius: 0.75rem;
+}
+
+[data-theme='frappe'] {
+  --background: 229 19% 23%;
+  --foreground: 227 70% 87%;
+  --card: 227 20% 26%;
+  --card-foreground: 227 70% 87%;
+  --popover: 227 20% 26%;
+  --popover-foreground: 227 70% 87%;
+  --primary: 189 70% 73%;
+  --primary-foreground: 229 19% 23%;
+  --muted: 228 17% 30%;
+  --muted-foreground: 227 44% 80%;
+  --border: 228 17% 35%;
+  --input: 228 17% 35%;
+  --ring: 189 70% 73%;
+}
+
+[data-theme='macchiato'] {
+  --background: 232 23% 18%;
+  --foreground: 220 83% 90%;
+  --card: 231 23% 21%;
+  --card-foreground: 220 83% 90%;
+  --popover: 231 23% 21%;
+  --popover-foreground: 220 83% 90%;
+  --primary: 171 47% 69%;
+  --primary-foreground: 232 23% 18%;
+  --muted: 230 20% 27%;
+  --muted-foreground: 220 40% 80%;
+  --border: 230 20% 31%;
+  --input: 230 20% 31%;
+  --ring: 171 47% 69%;
+}
+
+[data-theme='mocha'] {
+  --background: 240 21% 15%;
+  --foreground: 226 64% 88%;
+  --card: 237 16% 23%;
+  --card-foreground: 226 64% 88%;
+  --popover: 237 16% 23%;
+  --popover-foreground: 226 64% 88%;
+  --primary: 267 84% 81%;
+  --primary-foreground: 240 21% 15%;
+  --muted: 233 12% 30%;
+  --muted-foreground: 228 24% 78%;
+  --border: 233 12% 34%;
+  --input: 233 12% 34%;
+  --ring: 267 84% 81%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}

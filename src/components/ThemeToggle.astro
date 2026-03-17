@@ -1,0 +1,31 @@
+<select id="theme-select" class="rounded-md border bg-background px-2 py-1 text-sm">
+  <option value="latte">Catppuccin Latte</option>
+  <option value="frappe">Catppuccin Frappé</option>
+  <option value="macchiato">Catppuccin Macchiato</option>
+  <option value="mocha">Catppuccin Mocha</option>
+</select>
+
+<script is:inline>
+  (() => {
+    const key = 'theme-preference';
+    const select = document.getElementById('theme-select');
+
+    const darkThemes = new Set(['frappe', 'macchiato', 'mocha']);
+
+    const apply = (mode) => {
+      const theme = mode || 'latte';
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.classList.toggle('dark', darkThemes.has(theme));
+    };
+
+    const saved = localStorage.getItem(key) || 'latte';
+    apply(saved);
+    if (select) select.value = saved;
+
+    select?.addEventListener('change', (e) => {
+      const mode = e.target.value;
+      localStorage.setItem(key, mode);
+      apply(mode);
+    });
+  })();
+</script>
